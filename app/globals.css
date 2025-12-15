@@ -1,0 +1,24 @@
+@import 'tailwindcss';
+
+:root {
+	--foreground: #f4f4f5;
+	--background: #09090b;
+}
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--font-sans: var(--font-geist-sans);
+	--font-mono: var(--font-geist-mono);
+	--font-body: var(--font-instrument-sans);
+	--font-title: var(--font-satoshi);
+}
+
+html {
+	@apply overscroll-none;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	@apply bg-background text-foreground m-0 p-0 font-body text-base font-normal leading-normal tracking-normal subpixel-antialiased;
+}
