@@ -1,0 +1,101 @@
+'use client';
+
+import { motion } from 'motion/react';
+import React from 'react';
+import { Legend, Pie, PieChart } from 'recharts';
+
+const data = [
+	{ name: 'Group A', value: 400, fill: '#0088FE' },
+	{ name: 'Group B', value: 300, fill: '#00C49F' },
+	{ name: 'Group C', value: 300, fill: '#FFBB28' },
+	{ name: 'Group D', value: 200, fill: '#FF8042' },
+];
+
+export function PieChartWithPaddingAngle() {
+	return (
+		<PieChart
+			style={{
+				width: '100%',
+				aspectRatio: 1,
+			}}
+			responsive
+		>
+			<Pie
+				data={data}
+				innerRadius="80%"
+				outerRadius="100%"
+				cornerRadius="50%"
+				stroke={'#f4f4f533'}
+				startAngle={-90}
+				endAngle={-450}
+				paddingAngle={5}
+				dataKey="value"
+				labelLine={false}
+				isAnimationActive={true}
+				label={({ cx, cy }) => (
+					<>
+						<motion.text
+							x={cx}
+							y={cy}
+							textAnchor="middle"
+							dominantBaseline="middle"
+							fontFamily={'Satoshi'}
+							initial={{ opacity: 0, y: 10 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.5, ease: ['easeOut'] }}
+						>
+							<tspan
+								x={cx}
+								fontSize="32"
+								dy="-10px"
+								fontWeight={'600'}
+								fill={'#f4f4f5'}
+							>
+								23 kWh
+							</tspan>
+							<tspan
+								x={cx}
+								fontSize="20"
+								dy="30px"
+								fill={'#71717A'}
+								fontWeight="semibold"
+							>
+								/30
+							</tspan>
+							<tspan
+								x={cx}
+								fontSize="14"
+								fontWeight="300"
+								dy="20px"
+								fill={'#F6C74B'}
+							>
+								~2 days left
+							</tspan>
+						</motion.text>
+					</>
+				)}
+			/>
+			<Legend
+				wrapperStyle={{
+					paddingTop: 10,
+					fontSize: 14,
+					fontWeight: 500,
+				}}
+				iconSize={16}
+				iconType={'circle'}
+			/>
+		</PieChart>
+	);
+}
+
+const EnergyUsagePie = () => {
+	return (
+		<div className="flex items-center justify-center gap-2.5 sm:px-5">
+			<div className="aspect-square w-full max-w-sm">
+				<PieChartWithPaddingAngle />
+			</div>
+		</div>
+	);
+};
+
+export default EnergyUsagePie;
