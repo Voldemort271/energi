@@ -1,11 +1,11 @@
 @import 'tailwindcss';
-@import "tw-animate-css";
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
 @font-face {
-	font-family: "Satoshi";
-	src: url("../public/fonts/satoshi/base.ttf") format("ttf");
+	font-family: 'Satoshi';
+	src: url('../public/fonts/satoshi/base.ttf') format('ttf');
 	font-weight: 400;
 	font-style: normal;
 }
@@ -60,7 +60,7 @@ html {
 }
 
 body {
-	@apply bg-background text-foreground m-0 p-0 w-screen min-h-screen font-body text-base font-normal leading-normal tracking-normal subpixel-antialiased flex flex-col justify-center items-center;
+	@apply bg-background text-foreground font-body m-0 flex min-h-screen w-screen flex-col items-center justify-center p-0 text-base leading-normal font-normal tracking-normal subpixel-antialiased;
 }
 
 @keyframes scaleIn {
@@ -147,7 +147,7 @@ body {
 	* {
 		@apply border-border outline-ring/50;
 	}
-	
+
 	body {
 		@apply bg-background text-foreground;
 	}
