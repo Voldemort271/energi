@@ -3,6 +3,7 @@
 import React, { ReactNode, useEffect, useRef } from 'react';
 import LogoBar from '@/components/root/logo-bar';
 import Lenis from 'lenis';
+import Navbar from '@/components/root/navbar';
 
 export default function MobileLayout({
 	children,
@@ -34,13 +35,15 @@ export default function MobileLayout({
 	return (
 		<main
 			ref={containerRef}
-			className="sm:border-foreground/10 bg-background relative h-screen w-screen overflow-y-scroll overscroll-none rounded-3xl shadow-xl sm:h-[844px] sm:w-sm sm:border"
+			className="sm:border-foreground/10 bg-background relative z-0 h-screen w-screen overflow-y-scroll overscroll-none rounded-3xl shadow-xl sm:h-[844px] sm:w-sm sm:border"
 		>
-			<div className="p-5 pt-12">
+			<div className="h-full p-5 pt-12">
 				<LogoBar />
 				{children}
 			</div>
-			<div className="sticky bottom-0 h-16 w-full bg-red-400"></div>
+			<div className="sticky bottom-0 z-50">
+				<Navbar />
+			</div>
 		</main>
 	);
 }
