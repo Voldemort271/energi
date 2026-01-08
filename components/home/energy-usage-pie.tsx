@@ -93,11 +93,11 @@ export function PieChartWithPaddingAngle() {
 
 const EnergyUsagePie = () => {
 	return (
-		<div className="flex items-center justify-center gap-2.5 sm:px-5">
+		<section className="flex items-center justify-center gap-2.5 sm:px-5">
 			<div className="aspect-square w-full max-w-sm">
 				<PieChartWithPaddingAngle />
 			</div>
-		</div>
+		</section>
 	);
 };
 

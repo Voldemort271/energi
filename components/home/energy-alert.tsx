@@ -21,7 +21,7 @@ interface Props {
 
 const EnergyAlert = ({ variant }: Props) => {
 	return (
-		<div className={alertVariants({ variant })}>
+		<section className={alertVariants({ variant })}>
 			{variant === 'warning' ? (
 				<>
 					<AlertTriangle />
@@ -47,7 +47,7 @@ const EnergyAlert = ({ variant }: Props) => {
 					</span>
 				</>
 			)}
-		</div>
+		</section>
 	);
 };
 
