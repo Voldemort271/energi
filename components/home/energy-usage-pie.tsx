@@ -5,10 +5,11 @@ import React from 'react';
 import { Legend, Pie, PieChart } from 'recharts';
 
 const data = [
-	{ name: 'Group A', value: 400, fill: '#0088FE' },
-	{ name: 'Group B', value: 300, fill: '#00C49F' },
-	{ name: 'Group C', value: 300, fill: '#FFBB28' },
-	{ name: 'Group D', value: 200, fill: '#FF8042' },
+	{ name: 'My Refrigerator', value: 12, fill: '#d08700' },
+	{ name: 'Cooktop', value: 7, fill: '#46ecd5' },
+	{ name: 'Power Sockets', value: 5, fill: '#00bba7' },
+	{ name: 'Others', value: 2, fill: '#009689' },
+	{ name: 'Free', value: 7, fill: '#18181B' },
 ];
 
 export function PieChartWithPaddingAngle() {
@@ -82,6 +83,7 @@ export function PieChartWithPaddingAngle() {
 					fontWeight: 500,
 				}}
 				iconSize={16}
+				itemSorter={null}
 				iconType={'circle'}
 			/>
 		</PieChart>
