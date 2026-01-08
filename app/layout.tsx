@@ -36,7 +36,8 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`${satoshi.variable} ${instrumentSans.variable} antialiased`}
+				// TODO: Apply "dark" class dynamically. Default be "dark" for now
+				className={`${satoshi.variable} ${instrumentSans.variable} dark antialiased`}
 			>
 				{children}
 			</body>

@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import React from 'react';
 import { Legend, Pie, PieChart } from 'recharts';
 
+//TODO: Move this data out of this file. Optional but will help maintain consistency across project
 const data = [
 	{ name: 'My Refrigerator', value: 12, fill: '#d08700' },
 	{ name: 'Cooktop', value: 7, fill: '#46ecd5' },
