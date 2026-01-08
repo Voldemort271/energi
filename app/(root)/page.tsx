@@ -2,6 +2,7 @@ import EnergyAlert from '@/components/home/energy-alert';
 import EnergyUsagePie from '@/components/home/energy-usage-pie';
 import Bill from '@/components/home/bill';
 import TopInsight from '@/components/home/insight';
+import DailyChart from '@/components/home/daily-chart';
 
 export default function Home() {
 	return (
@@ -12,6 +13,7 @@ export default function Home() {
 			<div className="h-5" />
 			<Bill />
 			<div className="h-2.5" />
+			<DailyChart />
 			<TopInsight />
 		</main>
 	);
