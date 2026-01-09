@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const LogoBar = () => {
 	return (
-		<div className="flex items-center justify-between">
+		<header className="flex items-center justify-between">
 			<div className="font-title text-2xl font-semibold">energi.</div>
 			<Link
 				className="h-8 w-8 overflow-clip rounded-full transition-all hover:scale-110"
@@ -17,7 +17,7 @@ const LogoBar = () => {
 					className="h-full w-full object-cover"
 				/>
 			</Link>
-		</div>
+		</header>
 	);
 };
 

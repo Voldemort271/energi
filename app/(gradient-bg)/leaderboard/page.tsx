@@ -1,7 +1,7 @@
 import React from 'react';
 
 const LeaderboardPage = () => {
-	return <div>test again</div>;
+	return <div className="px-5">test again</div>;
 };
 
 export default LeaderboardPage;
