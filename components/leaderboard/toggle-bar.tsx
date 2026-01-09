@@ -25,7 +25,7 @@ const LeaderboardToggle = ({ toggle, setToggle }: Props) => {
 			<ToggleGroupItem
 				value="global"
 				aria-label="Toggle global leaderboard"
-				className="cursor-pointer rounded-full bg-zinc-950/20 transition-all hover:scale-105 hover:bg-zinc-950/40 data-[state=on]:bg-amber-700/20 data-[state=on]:*:[svg]:stroke-amber-200"
+				className="cursor-pointer rounded-full border-zinc-900/10 bg-zinc-950/20 text-zinc-100! transition-all hover:scale-105 hover:bg-zinc-950/40 data-[state=on]:bg-amber-700/20 data-[state=on]:*:[svg]:stroke-amber-200"
 			>
 				<Globe />
 				Global
@@ -33,7 +33,7 @@ const LeaderboardToggle = ({ toggle, setToggle }: Props) => {
 			<ToggleGroupItem
 				value="friends"
 				aria-label="Toggle friends leaderboard"
-				className="cursor-pointer rounded-full bg-zinc-950/20 transition-all hover:scale-105 hover:bg-zinc-950/40 data-[state=on]:bg-amber-700/20 data-[state=on]:*:[svg]:stroke-amber-200"
+				className="cursor-pointer rounded-full border-zinc-900/10 bg-zinc-950/20 text-zinc-100! transition-all hover:scale-105 hover:bg-zinc-950/40 data-[state=on]:bg-amber-700/20 data-[state=on]:*:[svg]:stroke-amber-200"
 			>
 				<Users />
 				Friends
@@ -41,7 +41,7 @@ const LeaderboardToggle = ({ toggle, setToggle }: Props) => {
 			<ToggleGroupItem
 				value="local"
 				aria-label="Toggle local leaderboard"
-				className="cursor-pointer rounded-full bg-zinc-950/20 transition-all hover:scale-105 hover:bg-zinc-950/40 data-[state=on]:bg-amber-700/20 data-[state=on]:*:[svg]:stroke-amber-200"
+				className="cursor-pointer rounded-full border-zinc-900/10 bg-zinc-950/20 text-zinc-100! transition-all hover:scale-105 hover:bg-zinc-950/40 data-[state=on]:bg-amber-700/20 data-[state=on]:*:[svg]:stroke-amber-200"
 			>
 				<MapPin />
 				Local
