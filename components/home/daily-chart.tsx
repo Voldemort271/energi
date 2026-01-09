@@ -59,6 +59,7 @@ const DailyChart = () => {
 					vertical={false}
 				/>
 				<XAxis dataKey="name" />
+				{/*TODO: Change tooltip background and text colour based on theme*/}
 				<Tooltip
 					contentStyle={{
 						backgroundColor: '#09090Bee',

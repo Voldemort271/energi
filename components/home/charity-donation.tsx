@@ -25,7 +25,7 @@ const CharityDonation = () => {
 			<div className="h-2.5"></div>
 			<Link
 				href={'/'}
-				className="font-title text-foreground w-fit rounded-sm bg-amber-800 px-4 py-2 text-base font-semibold transition-all hover:scale-105"
+				className="font-title w-fit rounded-sm bg-amber-800 px-4 py-2 text-base font-semibold text-zinc-100 transition-all hover:scale-105"
 			>
 				Donate
 			</Link>

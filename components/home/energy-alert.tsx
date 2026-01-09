@@ -3,7 +3,14 @@ import { AlertTriangle, CircleX, PartyPopper } from 'lucide-react';
 import { cva } from 'class-variance-authority';
 
 const alertVariants = cva(
-	['font-body', 'flex gap-2.5', 'rounded-lg', 'px-5', 'py-2.5'],
+	[
+		'font-body',
+		'flex gap-2.5',
+		'rounded-lg',
+		'px-5',
+		'py-2.5',
+		'text-zinc-100/70',
+	],
 	{
 		variants: {
 			variant: {
@@ -25,7 +32,7 @@ const EnergyAlert = ({ variant }: Props) => {
 			{variant === 'warning' ? (
 				<>
 					<AlertTriangle />
-					<span className="text-sm leading-tight font-medium text-zinc-100/70">
+					<span className="text-sm leading-tight font-medium">
 						<span className="font-semibold">Buckle up!</span> You&apos;ve used
 						up 87% of your weekly energy limit.
 					</span>
@@ -33,7 +40,7 @@ const EnergyAlert = ({ variant }: Props) => {
 			) : variant === 'success' ? (
 				<>
 					<PartyPopper />
-					<span className="text-sm leading-tight font-medium text-zinc-100/70">
+					<span className="text-sm leading-tight font-medium">
 						<span className="font-semibold">Keep it up!</span> You&apos;ve used
 						only 13% of your weekly energy limit.
 					</span>
@@ -41,7 +48,7 @@ const EnergyAlert = ({ variant }: Props) => {
 			) : (
 				<>
 					<CircleX />
-					<span className="text-sm leading-tight font-medium text-zinc-100/70">
+					<span className="text-sm leading-tight font-medium">
 						<span className="font-semibold">Oh no!</span> You&apos;ve used up
 						124% of your weekly energy limit.
 					</span>

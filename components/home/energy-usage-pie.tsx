@@ -22,6 +22,7 @@ export function PieChartWithPaddingAngle() {
 			}}
 			responsive
 		>
+			{/*TODO: Change text colours (and colour of free space) based on theme setting*/}
 			<Pie
 				data={data}
 				innerRadius="80%"
