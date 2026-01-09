@@ -1,12 +1,11 @@
 import React from 'react';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Globe, MapPin, Users } from 'lucide-react';
+import { LeaderboardVariant } from '@/db/leaderboard-data';
 
 interface Props {
-	toggle: 'global' | 'friends' | 'local';
-	setToggle: React.Dispatch<
-		React.SetStateAction<'global' | 'friends' | 'local'>
-	>;
+	toggle: LeaderboardVariant;
+	setToggle: React.Dispatch<React.SetStateAction<LeaderboardVariant>>;
 }
 
 const LeaderboardToggle = ({ toggle, setToggle }: Props) => {
@@ -18,9 +17,7 @@ const LeaderboardToggle = ({ toggle, setToggle }: Props) => {
 			size="sm"
 			className="font-title flex flex-wrap px-5 pb-2.5 text-sm"
 			value={toggle}
-			onValueChange={(value) =>
-				setToggle(value as 'global' | 'friends' | 'local')
-			}
+			onValueChange={(value) => setToggle(value as LeaderboardVariant)}
 		>
 			<ToggleGroupItem
 				value="global"
