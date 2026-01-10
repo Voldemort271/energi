@@ -49,7 +49,7 @@ export default function MobileLayout({
 				{children}
 				<div className="h-5" />
 			</div>
-			<div className="sticky bottom-0 z-50">
+			<div className="fixed bottom-0 z-50 w-full sm:sticky">
 				<Navbar />
 			</div>
 		</main>
