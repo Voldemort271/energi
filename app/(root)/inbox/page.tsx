@@ -6,7 +6,7 @@ import NotificationDisplay from '@/components/notifications/notification-display
 const InboxPage = () => {
 	return (
 		<section className="flex h-full flex-col gap-2.5">
-			<div className="font-title pt-8 text-4xl font-bold tracking-tight text-zinc-100">
+			<div className="font-title text-foreground pt-8 text-4xl font-bold tracking-tight">
 				Notifications
 			</div>
 			<StatusSection />
