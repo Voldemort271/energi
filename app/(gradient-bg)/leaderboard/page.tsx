@@ -4,6 +4,7 @@ import React from 'react';
 import LeaderboardToggle from '@/components/leaderboard/toggle-bar';
 import CurrentPositionCard from '@/components/leaderboard/current-position';
 import { LeaderboardVariant } from '@/db/leaderboard-data';
+import LeaderboardList from '@/components/leaderboard/leaderboard-list';
 
 const LeaderboardPage = () => {
 	const [toggle, setToggle] = React.useState<LeaderboardVariant>('global');
@@ -14,10 +15,11 @@ const LeaderboardPage = () => {
 				Leaderboard
 			</div>
 			<LeaderboardToggle toggle={toggle} setToggle={setToggle} />
-			<div className="bg-background flex min-h-dvh flex-col items-center gap-5 rounded-t-2xl p-5">
+			<div className="bg-background flex flex-col items-center gap-5 rounded-t-2xl p-5">
 				<div className="w-full px-5">
 					<CurrentPositionCard toggle={toggle} />
 				</div>
+				<LeaderboardList toggle={toggle} />
 			</div>
 		</section>
 	);

@@ -20,14 +20,21 @@ export default function MobileLayout({
 			lerp: 0.1,
 		});
 
-		function raf(time: number) {
+		const raf = (time: number) => {
 			lenis.raf(time);
 			requestAnimationFrame(raf);
-		}
+		};
 
 		requestAnimationFrame(raf);
 
+		const resizeObserver = new ResizeObserver(() => {
+			lenis.resize();
+		});
+
+		resizeObserver.observe(containerRef.current);
+
 		return () => {
+			resizeObserver.disconnect();
 			lenis.destroy();
 		};
 	}, []);
