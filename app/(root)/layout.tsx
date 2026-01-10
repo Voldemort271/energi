@@ -44,7 +44,7 @@ export default function MobileLayout({
 			ref={containerRef}
 			className="sm:border-foreground/10 bg-background relative z-0 h-screen w-screen overflow-y-scroll overscroll-none rounded-3xl shadow-xl sm:h-211 sm:w-sm sm:border"
 		>
-			<div className="min-h-full p-5 pt-12">
+			<div className="min-h-full p-5 pt-12 pb-20 sm:pb-5">
 				<LogoBar />
 				{children}
 				<div className="h-5" />
