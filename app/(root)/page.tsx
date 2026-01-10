@@ -1,4 +1,4 @@
-import EnergyAlert from '@/components/home/energy-alert';
+import AlertContainer from '@/components/root/alert-container';
 import EnergyUsagePie from '@/components/home/energy-usage-pie';
 import Bill from '@/components/home/bill';
 import TopInsight from '@/components/home/insight';
@@ -8,7 +8,9 @@ import CharityDonation from '@/components/home/charity-donation';
 export default function Home() {
 	return (
 		<main className="flex flex-col gap-2.5 pt-5">
-			<EnergyAlert variant="warning" />
+			<AlertContainer variant="warning" catchphrase={'Buckle up!'}>
+				You&apos;ve used up 87% of your weekly energy limit.
+			</AlertContainer>
 			<div className="h-2.5" />
 			<EnergyUsagePie />
 			<div className="h-5" />
