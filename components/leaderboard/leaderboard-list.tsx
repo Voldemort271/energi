@@ -20,7 +20,7 @@ const LeaderboardElement = ({ rank, name, energy, currRank }: ElementProps) => {
 				rank === 1
 					? 'border border-amber-400/20 bg-amber-400/10 text-amber-400'
 					: rank === 2
-						? 'border border-zinc-600/20 bg-zinc-600/10 text-zinc-300'
+						? 'border border-zinc-600/20 bg-zinc-600/10 text-zinc-400'
 						: rank === 3
 							? 'border border-yellow-800/20 bg-yellow-800/10 text-yellow-800'
 							: rank === currRank
