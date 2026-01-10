@@ -1,6 +1,7 @@
 import React from 'react';
 import StatusSection from '@/components/notifications/status-section';
 import ControlBar from '@/components/notifications/control-bar';
+import NotificationDisplay from '@/components/notifications/notification-display';
 
 const InboxPage = () => {
 	return (
@@ -10,6 +11,7 @@ const InboxPage = () => {
 			</div>
 			<StatusSection />
 			<ControlBar />
+			<NotificationDisplay />
 		</section>
 	);
 };
