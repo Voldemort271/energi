@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import ProfileImg from '@/public/images/profile-image.png';
+import { Pencil } from 'lucide-react';
 
 const ProfileCard = () => {
 	return (
@@ -20,8 +21,8 @@ const ProfileCard = () => {
 						<span>&middot;</span>
 						<span>Munich, DE</span>
 					</div>
-					<div className="text-sm font-medium text-teal-600">
-						Current streak: 23 weeks
+					<div className="flex flex-row items-center gap-1 text-sm font-medium text-teal-600 underline">
+						Edit profile <Pencil size={14} />
 					</div>
 				</div>
 			</div>
