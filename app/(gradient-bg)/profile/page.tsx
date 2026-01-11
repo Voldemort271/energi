@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import ProfileCard from '@/components/profile/profile-card';
 import AccountSelectMenu from '@/components/profile/account-selector';
 import { AvailableProfile, PROFILE_RECORDS } from '@/db/profiles';
+import PreferencesSection from '@/components/profile/preferences-section';
 
 const ProfilePage = () => {
 	const [currUser, setCurrUser] = useState<AvailableProfile>('solarisxd');
@@ -24,15 +25,11 @@ const ProfilePage = () => {
 					name={PROFILE_RECORDS[currUser].name}
 					location={PROFILE_RECORDS[currUser].location}
 				/>
-				<div className="bg-foreground/10 mb-5 h-px w-full" />
 
-				{/*TODO: Extract into different component*/}
+				<div className="bg-foreground/10 mb-2.5 h-px w-full" />
+
 				<div className="flex w-full flex-col gap-2.5">
-					<div>
-						<div className="font-title text-foreground/70 text-sm font-medium uppercase">
-							account settings
-						</div>
-					</div>
+					<PreferencesSection />
 				</div>
 			</div>
 		</section>
