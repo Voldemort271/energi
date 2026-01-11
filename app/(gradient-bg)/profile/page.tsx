@@ -11,7 +11,7 @@ const ProfilePage = () => {
 	return (
 		<section className="flex h-full flex-col gap-2.5">
 			<div className="flex flex-col justify-start px-5">
-				<div className="font-title text-foreground py-8 text-4xl font-bold tracking-tight">
+				<div className="font-title py-8 text-4xl font-bold tracking-tight text-zinc-100">
 					Your Profile
 				</div>
 				<div className="w-full">

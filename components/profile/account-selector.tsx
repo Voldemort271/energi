@@ -23,7 +23,7 @@ const AccountSelectMenu = ({ currUser, setCurrUser }: Props) => {
 			value={currUser}
 			onValueChange={(val) => setCurrUser(val as AvailableProfile)}
 		>
-			<SelectTrigger className="bg-background/20! border-background/10! mb-2.5 min-w-50 rounded-full text-sm font-medium">
+			<SelectTrigger className="mb-2.5 min-w-50 cursor-pointer rounded-full border-zinc-950/10! bg-zinc-950/20! text-sm font-medium text-zinc-100">
 				<SelectValue />
 			</SelectTrigger>
 			<SelectContent className="bg-background/70 backdrop-blur-2xl">
