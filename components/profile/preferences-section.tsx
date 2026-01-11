@@ -1,109 +1,14 @@
 'use client';
 
-import React, { Dispatch, SetStateAction, useState } from 'react';
-import { Switch } from '@/components/ui/switch';
-import { Label } from '@/components/ui/label';
+import React, { useState } from 'react';
 import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-
-interface ToggleSettingProps {
-	title: string;
-	children?: string;
-	toggle?: boolean;
-	setToggle?: Dispatch<SetStateAction<boolean>>;
-}
-
-interface MenuItem {
-	id: string;
-	name: string;
-}
-
-interface DropdownSettingProps<T extends readonly MenuItem[]> {
-	title: string;
-	menuItems: T;
-	currItem: T[number];
-	setCurrItem: Dispatch<SetStateAction<T[number]>>;
-}
-
-const ToggleSettingItem = ({
-	title,
-	children,
-	toggle,
-	setToggle,
-}: ToggleSettingProps) => {
-	return (
-		<div className="flex w-full flex-col items-start justify-start">
-			<div className="flex w-full items-center justify-between gap-5">
-				<Label
-					htmlFor={title}
-					className="text-foreground font-title text-base font-semibold"
-				>
-					{title}
-				</Label>
-				{toggle && setToggle ? (
-					<Switch
-						checked={toggle}
-						onCheckedChange={(val) => setToggle(val)}
-						id={title}
-						className="my-1 cursor-pointer data-[state=checked]:bg-teal-500 data-[state=unchecked]:bg-amber-800!"
-					/>
-				) : (
-					<Switch
-						id="airplane-mode"
-						className="my-1 cursor-pointer data-[state=checked]:bg-teal-500 data-[state=unchecked]:bg-amber-800!"
-					/>
-				)}
-			</div>
-			<div className="text-foreground/70 max-w-60 text-sm font-normal">
-				{children}
-			</div>
-		</div>
-	);
-};
-
-const themeOptions = [
-	{ id: 'dark', name: 'Dark' },
-	{ id: 'light', name: 'Light' },
-	{ id: 'default', name: 'System Default' },
-] as const;
-
-const DropdownSettingItem = ({
-	title,
-	menuItems,
-	currItem,
-	setCurrItem,
-}: DropdownSettingProps<typeof themeOptions>) => {
-	return (
-		<DropdownMenu modal={false}>
-			<DropdownMenuTrigger className="flex w-full cursor-pointer flex-col items-start justify-start outline-none">
-				<div className="text-foreground font-title text-base font-semibold">
-					{title}
-				</div>
-				<div className="text-sm font-semibold text-teal-600">
-					{currItem.name}
-				</div>
-			</DropdownMenuTrigger>
-			<DropdownMenuContent className="bg-background/70 font-title w-full px-2 py-2.5 font-medium backdrop-blur-2xl">
-				{menuItems.map((item) => (
-					<DropdownMenuItem
-						className="cursor-pointer"
-						key={item.id}
-						onClick={() => setCurrItem(item)}
-					>
-						{item.name}
-					</DropdownMenuItem>
-				))}
-			</DropdownMenuContent>
-		</DropdownMenu>
-	);
-};
+	DropdownSettingItem,
+	ToggleSettingItem,
+} from '@/components/profile/settings-items';
+import { SettingsDropdownList, themeOptions } from '@/db/settings-data';
 
 const PreferencesSection = () => {
-	const [theme, setTheme] = useState<(typeof themeOptions)[number]>(
+	const [theme, setTheme] = useState<SettingsDropdownList[number]>(
 		themeOptions[0],
 	);
 
