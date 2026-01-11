@@ -2,24 +2,29 @@ import React from 'react';
 import Image from 'next/image';
 import ProfileImg from '@/public/images/profile-image.png';
 import { Pencil } from 'lucide-react';
+import { AvailableProfile, ProfileData } from '@/db/profiles';
 
-const ProfileCard = () => {
+interface Props extends ProfileData {
+	username: AvailableProfile;
+}
+
+const ProfileCard = ({ username, name, location }: Props) => {
 	return (
 		<div className="flex w-full flex-col gap-1 py-4">
 			<div className="flex flex-row items-center gap-2.5">
 				<Image
 					src={ProfileImg}
-					alt={'Profile image'}
+					alt={`Profile image of ${name}`}
 					className="h-20 w-20 rounded-lg"
 				/>
 				<div className="flex flex-col">
 					<div className="font-title text-foreground text-2xl leading-none font-semibold">
-						Mark Gunthers
+						{name}
 					</div>
 					<div className="text-foreground/70 flex flex-row items-center justify-start gap-1 text-base font-medium">
-						<span>@markdolla</span>
-						<span>&middot;</span>
-						<span>Munich, DE</span>
+						<span>{`@${username}`}</span>
+						<span className={location ? 'block' : 'hidden'}>&middot;</span>
+						<span className={location ? 'block' : 'hidden'}>{location}</span>
 					</div>
 					<div className="flex flex-row items-center gap-1 text-sm font-medium text-teal-600 underline">
 						Edit profile <Pencil size={14} />

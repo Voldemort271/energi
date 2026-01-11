@@ -1,5 +1,5 @@
 import React from 'react';
-import { LeaderboardVariant, rankData } from '@/db/leaderboard-data';
+import { LeaderboardVariant, RANK_DATA } from '@/db/leaderboard-data';
 import { Flower } from 'lucide-react';
 
 interface ElementProps {
@@ -40,7 +40,7 @@ const LeaderboardElement = ({ rank, name, energy, currRank }: ElementProps) => {
 };
 
 const LeaderboardList = ({ toggle }: ListProps) => {
-	const currRank = rankData[toggle].currentRank;
+	const currRank = RANK_DATA[toggle].currentRank;
 	const offset = currRank - 2;
 
 	return (

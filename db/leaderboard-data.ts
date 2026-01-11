@@ -6,7 +6,7 @@ export type PositionData = {
 	topPercent: number;
 };
 
-export const rankData: Record<LeaderboardVariant, PositionData> = {
+export const RANK_DATA: Record<LeaderboardVariant, PositionData> = {
 	global: {
 		currentRank: 145,
 		diff: 62,
