@@ -1,12 +1,32 @@
-import React, { Dispatch, SetStateAction } from 'react';
+'use client';
+
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 interface ToggleSettingProps {
 	title: string;
 	children?: string;
 	toggle?: boolean;
 	setToggle?: Dispatch<SetStateAction<boolean>>;
+}
+
+interface MenuItem {
+	id: string;
+	name: string;
+}
+
+interface DropdownSettingProps<T extends readonly MenuItem[]> {
+	title: string;
+	menuItems: T;
+	currItem: T[number];
+	setCurrItem: Dispatch<SetStateAction<T[number]>>;
 }
 
 const ToggleSettingItem = ({
@@ -16,10 +36,10 @@ const ToggleSettingItem = ({
 	setToggle,
 }: ToggleSettingProps) => {
 	return (
-		<div className="flex flex-col items-start justify-start">
+		<div className="flex w-full flex-col items-start justify-start">
 			<div className="flex w-full items-center justify-between gap-5">
 				<Label
-					htmlFor="airplane-mode"
+					htmlFor={title}
 					className="text-foreground font-title text-base font-semibold"
 				>
 					{title}
@@ -28,7 +48,7 @@ const ToggleSettingItem = ({
 					<Switch
 						checked={toggle}
 						onCheckedChange={(val) => setToggle(val)}
-						id="airplane-mode"
+						id={title}
 						className="my-1 cursor-pointer data-[state=checked]:bg-teal-500 data-[state=unchecked]:bg-amber-800!"
 					/>
 				) : (
@@ -45,7 +65,48 @@ const ToggleSettingItem = ({
 	);
 };
 
+const themeOptions = [
+	{ id: 'dark', name: 'Dark' },
+	{ id: 'light', name: 'Light' },
+	{ id: 'default', name: 'System Default' },
+] as const;
+
+const DropdownSettingItem = ({
+	title,
+	menuItems,
+	currItem,
+	setCurrItem,
+}: DropdownSettingProps<typeof themeOptions>) => {
+	return (
+		<DropdownMenu modal={false}>
+			<DropdownMenuTrigger className="flex w-full cursor-pointer flex-col items-start justify-start outline-none">
+				<div className="text-foreground font-title text-base font-semibold">
+					{title}
+				</div>
+				<div className="text-sm font-semibold text-teal-600">
+					{currItem.name}
+				</div>
+			</DropdownMenuTrigger>
+			<DropdownMenuContent className="bg-background/70 font-title w-full px-2 py-2.5 font-medium backdrop-blur-2xl">
+				{menuItems.map((item) => (
+					<DropdownMenuItem
+						className="cursor-pointer"
+						key={item.id}
+						onClick={() => setCurrItem(item)}
+					>
+						{item.name}
+					</DropdownMenuItem>
+				))}
+			</DropdownMenuContent>
+		</DropdownMenu>
+	);
+};
+
 const PreferencesSection = () => {
+	const [theme, setTheme] = useState<(typeof themeOptions)[number]>(
+		themeOptions[0],
+	);
+
 	return (
 		<div className="space-y-2.5">
 			<div className="font-title text-foreground/70 text-sm font-medium uppercase">
@@ -56,9 +117,14 @@ const PreferencesSection = () => {
 					Enable notifications for timely updates on your smartphone.
 				</ToggleSettingItem>
 				<div className="bg-foreground/5 h-px w-full" />
-				<ToggleSettingItem title="Location Access">
-					This is needed to show your standing in the Local Leaderboard.
-				</ToggleSettingItem>
+				<ToggleSettingItem title="Allow Location" />
+				<div className="bg-foreground/5 h-px w-full" />
+				<DropdownSettingItem
+					title={'App Theme'}
+					menuItems={themeOptions}
+					currItem={theme}
+					setCurrItem={setTheme}
+				/>
 			</div>
 		</div>
 	);
