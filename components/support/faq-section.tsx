@@ -18,7 +18,7 @@ const FAQSection = () => {
 			{faqItems.map(({ question, answer }, i) => (
 				<AccordionItem value={`item-${i + 1}`} key={i}>
 					<AccordionTrigger className="py-2.5">{question}</AccordionTrigger>
-					<AccordionContent className="flex w-full flex-col gap-4 text-balance">
+					<AccordionContent className="text-foreground/80 flex w-full flex-col gap-4 text-balance">
 						{answer.map((el, j) => {
 							return (
 								<div key={j} className="w-full">
