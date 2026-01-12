@@ -5,6 +5,7 @@ import ProfileCard from '@/components/profile/profile-card';
 import AccountSelectMenu from '@/components/profile/account-selector';
 import { AvailableProfile, PROFILE_RECORDS } from '@/db/profiles';
 import PreferencesSection from '@/components/profile/preferences-section';
+import AccountSettingsSection from '@/components/profile/acc-settings-section';
 
 const ProfilePage = () => {
 	const [currUser, setCurrUser] = useState<AvailableProfile>('solarisxd');
@@ -25,11 +26,12 @@ const ProfilePage = () => {
 					name={PROFILE_RECORDS[currUser].name}
 					location={PROFILE_RECORDS[currUser].location}
 				/>
-
 				<div className="bg-foreground/10 mb-2.5 h-px w-full" />
-
 				<div className="flex w-full flex-col gap-2.5">
 					<PreferencesSection />
+				</div>
+				<div className="flex w-full flex-col gap-2.5">
+					<AccountSettingsSection />
 				</div>
 			</div>
 		</section>

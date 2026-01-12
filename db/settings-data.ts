@@ -16,3 +16,10 @@ export const themeOptions: SettingsDropdownList = [
 export const currencyOptions: SettingsDropdownList = Object.values(
 	CURRENCIES,
 ).map((el) => ({ id: el.code, name: el.label }));
+
+export const authOptions: SettingsDropdownList = [
+	{ id: 'none', name: '2FA disabled' },
+	{ id: 'passkey', name: 'Passkey' },
+	{ id: 'authenticator', name: 'Authenticator app' },
+	{ id: 'otp', name: 'One-time security code' },
+];

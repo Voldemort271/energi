@@ -5,11 +5,18 @@ import {
 	DropdownSettingItem,
 	ToggleSettingItem,
 } from '@/components/profile/settings-items';
-import { SettingsDropdownList, themeOptions } from '@/db/settings-data';
+import {
+	currencyOptions,
+	SettingsDropdownList,
+	themeOptions,
+} from '@/db/settings-data';
 
 const PreferencesSection = () => {
 	const [theme, setTheme] = useState<SettingsDropdownList[number]>(
 		themeOptions[0],
+	);
+	const [currency, setCurrency] = useState<SettingsDropdownList[number]>(
+		currencyOptions[0],
 	);
 
 	return (
@@ -22,7 +29,14 @@ const PreferencesSection = () => {
 					Enable notifications for timely updates on your smartphone.
 				</ToggleSettingItem>
 				<div className="bg-foreground/5 h-px w-full" />
-				<ToggleSettingItem title="Allow Location" />
+				<ToggleSettingItem title="Allow Location" toggle={true} />
+				<div className="bg-foreground/5 h-px w-full" />
+				<DropdownSettingItem
+					title={'Currency'}
+					menuItems={currencyOptions}
+					currItem={currency}
+					setCurrItem={setCurrency}
+				/>
 				<div className="bg-foreground/5 h-px w-full" />
 				<DropdownSettingItem
 					title={'App Theme'}
