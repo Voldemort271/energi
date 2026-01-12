@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-const DeclarationLinks = () => {
+const SupportLinks = () => {
 	return (
 		<div className="font-title text-foreground/70 flex w-full flex-col items-center justify-center text-sm font-medium">
 			<Link
@@ -26,4 +26,4 @@ const DeclarationLinks = () => {
 	);
 };
 
-export default DeclarationLinks;
+export default SupportLinks;
