@@ -1,6 +1,5 @@
 import React from 'react';
 import { LeaderboardVariant, RANK_DATA } from '@/db/leaderboard-data';
-import { Flower } from 'lucide-react';
 
 interface ElementProps {
 	rank: number;
@@ -94,11 +93,6 @@ const LeaderboardList = ({ toggle }: ListProps) => {
 					})}
 				</>
 			)}
-			<div className="font-title text-foreground/70 pt-1s2 flex flex-col items-center justify-center gap-1 px-2.5 py-5 text-center text-sm font-medium">
-				<Flower size={24} />
-				Every unit saved helps reduce collective energy waste. We&apos;re proud
-				of you for taking this initiative!
-			</div>
 		</div>
 	);
 };

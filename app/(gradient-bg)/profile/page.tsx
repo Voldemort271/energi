@@ -6,6 +6,7 @@ import AccountSelectMenu from '@/components/profile/account-selector';
 import { AvailableProfile, PROFILE_RECORDS } from '@/db/profiles';
 import PreferencesSection from '@/components/profile/preferences-section';
 import AccountSettingsSection from '@/components/profile/acc-settings-section';
+import DeclarationLinks from '@/components/profile/declarations-links';
 
 const ProfilePage = () => {
 	const [currUser, setCurrUser] = useState<AvailableProfile>('solarisxd');
@@ -33,6 +34,7 @@ const ProfilePage = () => {
 				<div className="flex w-full flex-col gap-2.5">
 					<AccountSettingsSection />
 				</div>
+				<DeclarationLinks />
 			</div>
 		</section>
 	);
