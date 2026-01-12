@@ -1,6 +1,6 @@
 import React from 'react';
 import { cva } from 'class-variance-authority';
-import { LeaderboardVariant, rankData } from '@/db/leaderboard-data';
+import { LeaderboardVariant, RANK_DATA } from '@/db/leaderboard-data';
 import { ChevronDown, ChevronUp, Minus } from 'lucide-react';
 
 const backgroundVariants = cva(
@@ -22,9 +22,9 @@ const CurrentPositionCard = ({ toggle }: { toggle: LeaderboardVariant }) => {
 			<div
 				className={backgroundVariants({
 					rankDiff:
-						rankData[toggle].diff > 0
+						RANK_DATA[toggle].diff > 0
 							? 'up'
-							: rankData[toggle].diff === 0
+							: RANK_DATA[toggle].diff === 0
 								? 'mid'
 								: 'down',
 				})}
@@ -34,28 +34,28 @@ const CurrentPositionCard = ({ toggle }: { toggle: LeaderboardVariant }) => {
 			</div>
 			<div className="flex flex-row flex-wrap items-end justify-center gap-2">
 				<div className="font-title text-foreground text-4xl leading-none font-bold tracking-tight">
-					{`#${rankData[toggle].currentRank}`}
+					{`#${RANK_DATA[toggle].currentRank}`}
 				</div>
 				<div
 					className={`font-title flex flex-row items-end text-base leading-tight font-semibold ${
-						rankData[toggle].diff > 0
+						RANK_DATA[toggle].diff > 0
 							? 'text-teal-600'
-							: rankData[toggle].diff === 0
+							: RANK_DATA[toggle].diff === 0
 								? 'text-amber-500'
 								: 'text-rose-500'
 					}`}
 				>
-					{rankData[toggle].diff > 0 ? (
+					{RANK_DATA[toggle].diff > 0 ? (
 						<ChevronUp size={16} />
-					) : rankData[toggle].diff === 0 ? (
+					) : RANK_DATA[toggle].diff === 0 ? (
 						<Minus size={16} />
 					) : (
 						<ChevronDown size={16} />
 					)}
-					{Math.abs(rankData[toggle].diff)}
+					{Math.abs(RANK_DATA[toggle].diff)}
 				</div>
 			</div>
-			<div className="font-title text-foreground/70 pt-1 text-lg font-semibold">{`Top ${rankData[toggle].topPercent}% this week`}</div>
+			<div className="font-title text-foreground/70 pt-1 text-lg font-semibold">{`Top ${RANK_DATA[toggle].topPercent}% this week`}</div>
 		</div>
 	);
 };
