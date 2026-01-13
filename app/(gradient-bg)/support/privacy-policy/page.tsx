@@ -29,8 +29,7 @@ const PrivacyPolicyPage = () => {
 					className="font-title text-foreground/70 text-sm font-medium uppercase"
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.5, delay: 0.7 }}
-				>
+					transition={{ duration: 0.5, delay: 0.7 }}					>
 					Please just pretend this is legit privacy policy text. thank you :)
 				</motion.div>
 				<div className="w-full text-base">
@@ -63,8 +62,8 @@ const PrivacyPolicyPage = () => {
 					minima possimus praesentium qui quibusdam reprehenderit tempore
 					temporibus vero voluptatum?
 				</div>
-			</div>
-		</section>
+			</motion.div>
+		</motion.section>
 	);
 };
 
