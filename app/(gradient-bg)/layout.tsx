@@ -16,7 +16,7 @@ export default function MobileLayoutWithGradient({
 
 	return (
 		<main className="bg-background sm:border-border relative z-0 h-screen w-screen overflow-y-scroll overscroll-none rounded-3xl shadow-xl sm:h-211 sm:w-sm sm:border">
-			<div className="bg-background relative z-0 min-h-full">
+			<div className="bg-background relative z-0 min-h-full pb-20 sm:pb-5">
 				<div className="absolute -z-10 h-100 w-full bg-linear-60 from-teal-800 via-teal-600 to-amber-600" />
 				<div className="px-5 pt-12">
 					<LogoBar />
