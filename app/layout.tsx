@@ -4,6 +4,7 @@ import Satoshi from 'next/font/local';
 import './globals.css';
 import React, { ReactNode } from 'react';
 import { AppPreferencesProvider } from '@/context/app-preferences-context';
+import { ThemeProviderWrapper } from '@/context/theme-provider';
 
 const instrumentSans = Instrument_Sans({
 	variable: '--font-instrument-sans',
@@ -40,7 +41,9 @@ export default function RootLayout({
 				// TODO: Apply "dark" class dynamically. Default be "dark" for now
 				className={`${satoshi.variable} ${instrumentSans.variable} dark antialiased`}
 			>
-				<AppPreferencesProvider>{children}</AppPreferencesProvider>
+				<AppPreferencesProvider>
+					<ThemeProviderWrapper>{children}</ThemeProviderWrapper>
+				</AppPreferencesProvider>
 			</body>
 		</html>
 	);

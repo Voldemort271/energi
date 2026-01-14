@@ -15,6 +15,8 @@ import { CURRENCIES, Currency } from '@/db/currency';
 interface AppPreferencesType {
 	theme: SettingsDropdownItem;
 	setTheme: Dispatch<SetStateAction<SettingsDropdownItem>>;
+	floatingNav: boolean;
+	setFloatingNav: Dispatch<SetStateAction<boolean>>;
 	currency: Currency;
 	setCurrency: Dispatch<SetStateAction<Currency>>;
 }
@@ -23,6 +25,7 @@ interface Props {
 	children: ReactNode;
 	initialTheme?: SettingsDropdownItem;
 	initialCurrency?: Currency;
+	initialFloatingNav?: boolean;
 }
 
 const AppPreferencesContext = createContext<AppPreferencesType | undefined>(
@@ -31,15 +34,24 @@ const AppPreferencesContext = createContext<AppPreferencesType | undefined>(
 
 const AppPreferencesProvider = ({
 	children,
-	initialTheme = themeOptions[0],
+	initialTheme = themeOptions[2], // 0 - dark, 1 - light, 2 - default (dark)
 	initialCurrency = CURRENCIES['EUR'],
+	initialFloatingNav = false,
 }: Props) => {
 	const [theme, setTheme] = useState<SettingsDropdownItem>(initialTheme);
 	const [currency, setCurrency] = useState<Currency>(initialCurrency);
+	const [floatingNav, setFloatingNav] = useState(initialFloatingNav);
 
 	return (
 		<AppPreferencesContext.Provider
-			value={{ theme, setTheme, currency, setCurrency }}
+			value={{
+				theme,
+				setTheme,
+				currency,
+				setCurrency,
+				floatingNav,
+				setFloatingNav,
+			}}
 		>
 			{children}
 		</AppPreferencesContext.Provider>
