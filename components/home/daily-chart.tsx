@@ -3,6 +3,7 @@
 import React from 'react';
 
 import { Bar, BarChart, CartesianGrid, Tooltip, XAxis, YAxis } from 'recharts';
+import { useAppPreferencesContext } from '@/context/app-preferences-context';
 
 const data = [
 	{
@@ -36,6 +37,8 @@ const data = [
 ];
 
 const DailyChart = () => {
+	const { theme } = useAppPreferencesContext();
+
 	return (
 		<div className="flex flex-col gap-2.5">
 			<div className="font-title text-2xl font-semibold text-teal-500">
@@ -59,12 +62,11 @@ const DailyChart = () => {
 					vertical={false}
 				/>
 				<XAxis dataKey="name" />
-				{/*TODO: Change tooltip background and text colour based on theme*/}
 				<Tooltip
 					contentStyle={{
-						backgroundColor: '#09090Bee',
+						backgroundColor: theme.id === 'dark' ? '#09090Bee' : '#f4f4f5ee',
 						borderWidth: 1,
-						borderColor: '#f4f4f516',
+						borderColor: theme.id === 'dark' ? '#f4f4f516' : '#09090B16',
 						borderRadius: 10,
 						fontSize: 12,
 						padding: '10px 15px',

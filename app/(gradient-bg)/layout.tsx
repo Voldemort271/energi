@@ -46,9 +46,8 @@ export default function MobileLayoutWithGradient({
 	return (
 		<main
 			ref={containerRef}
-			className="bg-background relative z-0 h-screen w-screen overflow-y-scroll overscroll-none rounded-3xl shadow-xl sm:h-211 sm:w-sm sm:border sm:border-zinc-700"
+			className="bg-background sm:border-border relative z-0 h-screen w-screen overflow-y-scroll overscroll-none rounded-3xl shadow-xl sm:h-211 sm:w-sm sm:border"
 		>
-			{/*TODO: Colour border according to theme*/}
 			<div className="bg-background relative z-0 min-h-full">
 				<div className="absolute -z-10 h-100 w-full bg-linear-60 from-teal-800 via-teal-600 to-amber-600" />
 				<div className="px-5 pt-12">

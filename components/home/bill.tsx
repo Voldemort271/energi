@@ -21,7 +21,6 @@ const rate = 0.25;
 const MonthlyBill = () => {
 	const { currency, setCurrency } = useAppPreferencesContext();
 
-	// TODO: Move currency selection logic to Settings page so that user doesn't have to do it multiple times.
 	return (
 		<section className="flex w-full flex-col items-start justify-start rounded-lg border border-zinc-100/10 bg-amber-500/5 px-5 py-6">
 			<div className="font-title flex w-full flex-col">
