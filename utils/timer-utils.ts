@@ -3,6 +3,8 @@ import { toast } from 'sonner';
 export type availableTasks = 'task1' | 'task2';
 
 export const startTimedTask = (taskName: availableTasks): void => {
+	if (typeof window === 'undefined') return;
+
 	const isAnyTaskRunning = sessionStorage.getItem('taskInProgress') === 'true';
 	const isThisTaskRunning = !!sessionStorage.getItem(taskName);
 
@@ -22,6 +24,8 @@ export const startTimedTask = (taskName: availableTasks): void => {
 };
 
 export const endTimedTask = (taskName: availableTasks): number => {
+	if (typeof window === 'undefined') return -1;
+
 	const startTimeStr = sessionStorage.getItem(taskName);
 	const isTaskRunning = !!sessionStorage.getItem('taskInProgress');
 
