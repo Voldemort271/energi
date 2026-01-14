@@ -15,8 +15,9 @@ lockfiles may mismatch if we both use different package managers.
     - Time taken to complete a certain action through each navigation variant. We will get continuous numeric data
       from this (as opposed to discrete data from the ratings). We can then conduct a hypothesis test to check if
       one of the variants is actually better than the other.
-- There's dark and light mode in the app. Measurables: asking users to rate the looks wrt theme (x/10 for dark mode,
-  x/10 for light mode). We can then plot this data on a histogram or a box plot.
+- There's dark and light mode in the app. Measurables:
+    - Rating looks wrt theme (x/10 for dark mode, x/10 for light mode). We can then plot this data on a histogram
+      or a box plot.
 
 # Folder structure
 
