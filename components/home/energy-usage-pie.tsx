@@ -54,7 +54,7 @@ const PieChartWithPaddingAngle = () => {
 								fontSize="32"
 								dy="-10px"
 								fontWeight={'600'}
-								fill={theme.id === 'dark' ? '#09090B' : '#f4f4f5'}
+								fill={theme.id === 'light' ? '#09090B' : '#f4f4f5'}
 							>
 								23 kWh
 							</tspan>
