@@ -34,7 +34,7 @@ const Navbar = () => {
 	const pathname = usePathname();
 
 	return (
-		<nav className="bg-background/90 border-foreground/10 flex w-full justify-between gap-5 border-t px-5 py-3 backdrop-blur-2xl sm:px-12">
+		<nav className="bg-background/90 border-foreground/10 pointer-events-auto flex w-full justify-between gap-5 border-t px-5 py-3 backdrop-blur-2xl sm:px-12">
 			{pages.map(({ path, icon }) => (
 				<NavButton
 					key={path}
