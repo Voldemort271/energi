@@ -23,7 +23,9 @@ const LeaderboardToggle = ({ toggle, setToggle }: Props) => {
 			size="sm"
 			className="font-title flex flex-wrap px-5 pb-2.5 text-sm"
 			value={toggle}
-			onValueChange={(value) => setToggle(value as LeaderboardVariant)}
+			onValueChange={(value) => {
+				if (value) setToggle(value as LeaderboardVariant);
+			}}
 		>
 			<ToggleGroupItem
 				value="global"
