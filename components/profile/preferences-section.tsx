@@ -41,7 +41,7 @@ const PreferencesSection = () => {
 					Enable notifications for timely updates on your smartphone.
 				</ToggleSettingItem>
 				<div className="bg-foreground/5 h-px w-full" />
-				<ToggleSettingItem title="Allow Location" toggle={true} />
+				<ToggleSettingItem title="Allow Location" />
 				<div className="bg-foreground/5 h-px w-full" />
 				<DropdownSettingItem
 					title={'Currency'}
