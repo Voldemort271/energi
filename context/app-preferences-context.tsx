@@ -8,13 +8,13 @@ import {
 	useContext,
 	useState,
 } from 'react';
-import { SettingsDropdownItem, themeOptions } from '@/db/settings-data';
+import { SettingsDropdownList, themeOptions } from '@/db/settings-data';
 import { CURRENCIES, Currency } from '@/db/currency';
 
 // Theme, Nav variant, Currency, (optional:) Location, Notification preferences
 interface AppPreferencesType {
-	theme: SettingsDropdownItem;
-	setTheme: Dispatch<SetStateAction<SettingsDropdownItem>>;
+	theme: SettingsDropdownList[number];
+	setTheme: Dispatch<SetStateAction<SettingsDropdownList[number]>>;
 	floatingNav: boolean;
 	setFloatingNav: Dispatch<SetStateAction<boolean>>;
 	currency: Currency;
@@ -23,7 +23,7 @@ interface AppPreferencesType {
 
 interface Props {
 	children: ReactNode;
-	initialTheme?: SettingsDropdownItem;
+	initialTheme?: SettingsDropdownList[number];
 	initialCurrency?: Currency;
 	initialFloatingNav?: boolean;
 }
@@ -38,7 +38,8 @@ const AppPreferencesProvider = ({
 	initialCurrency = CURRENCIES['EUR'],
 	initialFloatingNav = false,
 }: Props) => {
-	const [theme, setTheme] = useState<SettingsDropdownItem>(initialTheme);
+	const [theme, setTheme] =
+		useState<SettingsDropdownList[number]>(initialTheme);
 	const [currency, setCurrency] = useState<Currency>(initialCurrency);
 	const [floatingNav, setFloatingNav] = useState(initialFloatingNav);
 

@@ -10,14 +10,14 @@ import {
 	SettingsDropdownList,
 	themeOptions,
 } from '@/db/settings-data';
+import { useAppPreferencesContext } from '@/context/app-preferences-context';
 
 const PreferencesSection = () => {
-	const [theme, setTheme] = useState<SettingsDropdownList[number]>(
-		themeOptions[0],
-	);
 	const [currency, setCurrency] = useState<SettingsDropdownList[number]>(
 		currencyOptions[0],
 	);
+
+	const { theme, setTheme } = useAppPreferencesContext();
 
 	return (
 		<div className="space-y-2.5">
