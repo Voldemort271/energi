@@ -29,6 +29,8 @@ export const ToggleSettingItem = ({
 	toggle,
 	setToggle,
 }: ToggleSettingProps) => {
+	const isTaskInProgress = sessionStorage.getItem('taskInProgress') === 'true';
+
 	return (
 		<div className="flex w-full flex-col items-start justify-start">
 			<div className="flex w-full items-center justify-between gap-5">
@@ -40,9 +42,10 @@ export const ToggleSettingItem = ({
 				</Label>
 				<Switch
 					checked={toggle}
+					disabled={isTaskInProgress}
 					onCheckedChange={(val) => setToggle?.(val)}
 					id={title}
-					className="my-1 cursor-pointer data-[state=checked]:bg-teal-500 data-[state=unchecked]:bg-amber-800!"
+					className="disabled:bg-foreground/70! my-1 cursor-pointer data-[state=checked]:bg-teal-500 data-[state=unchecked]:bg-amber-800!"
 				/>
 			</div>
 			<div className="text-foreground/70 max-w-60 text-sm font-normal">
@@ -58,13 +61,20 @@ export const DropdownSettingItem = ({
 	currItem,
 	setCurrItem,
 }: DropdownSettingProps<SettingsDropdownList>) => {
+	const isTaskInProgress = sessionStorage.getItem('taskInProgress') === 'true';
+
 	return (
 		<DropdownMenu modal={false}>
-			<DropdownMenuTrigger className="flex w-full cursor-pointer flex-col items-start justify-start outline-none">
+			<DropdownMenuTrigger
+				className="flex w-full cursor-pointer flex-col items-start justify-start outline-none"
+				disabled={isTaskInProgress}
+			>
 				<div className="text-foreground font-title text-base font-semibold">
 					{title}
 				</div>
-				<div className="text-sm font-semibold text-teal-600">
+				<div
+					className={`text-sm font-semibold ${isTaskInProgress ? 'text-teal-600' : 'text-foreground/70'}`}
+				>
 					{currItem.name}
 				</div>
 			</DropdownMenuTrigger>
