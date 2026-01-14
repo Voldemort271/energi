@@ -14,7 +14,14 @@ import { useAppPreferencesContext } from '@/context/app-preferences-context';
 import { CURRENCIES, CurrencyCode } from '@/db/currency';
 
 const PreferencesSection = () => {
-	const { theme, setTheme, currency, setCurrency } = useAppPreferencesContext();
+	const {
+		theme,
+		setTheme,
+		currency,
+		setCurrency,
+		floatingNav,
+		setFloatingNav,
+	} = useAppPreferencesContext();
 
 	const [activeCurrency, setActiveCurrency] = useState<
 		SettingsDropdownList[number]
@@ -49,6 +56,14 @@ const PreferencesSection = () => {
 					currItem={theme}
 					setCurrItem={setTheme}
 				/>
+				<div className="bg-foreground/5 h-px w-full" />
+				<ToggleSettingItem
+					title={'New: Floating Nav'}
+					toggle={floatingNav}
+					setToggle={setFloatingNav}
+				>
+					Enable this setting to use our new floating navigation.
+				</ToggleSettingItem>
 			</div>
 		</div>
 	);

@@ -5,6 +5,7 @@ import React, { Dispatch, SetStateAction, useState } from 'react';
 import { Menu } from 'lucide-react';
 import { availablePages, NavItemType } from '@/db/page-content-data';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 interface NavItemProps extends NavItemType {
 	index: number;
@@ -29,8 +30,7 @@ const FloatingNavItem = ({
 	active,
 }: NavItemProps) => {
 	return (
-		<motion.a
-			href={path}
+		<motion.div
 			style={{
 				width: `${navItemRadius}px`,
 				height: `${navItemRadius}px`,
@@ -52,8 +52,13 @@ const FloatingNavItem = ({
 			}}
 			transition={{ duration: 0.3, ease: [0, 0.55, 0.45, 1] }}
 		>
-			{icon}
-		</motion.a>
+			<Link
+				href={path}
+				className="flex h-full w-full items-center justify-center"
+			>
+				{icon}
+			</Link>
+		</motion.div>
 	);
 };
 

@@ -38,19 +38,12 @@ export const ToggleSettingItem = ({
 				>
 					{title}
 				</Label>
-				{toggle && setToggle ? (
-					<Switch
-						checked={toggle}
-						onCheckedChange={(val) => setToggle(val)}
-						id={title}
-						className="my-1 cursor-pointer data-[state=checked]:bg-teal-500 data-[state=unchecked]:bg-amber-800!"
-					/>
-				) : (
-					<Switch
-						id="airplane-mode"
-						className="my-1 cursor-pointer data-[state=checked]:bg-teal-500 data-[state=unchecked]:bg-amber-800!"
-					/>
-				)}
+				<Switch
+					checked={toggle}
+					onCheckedChange={(val) => setToggle?.(val)}
+					id={title}
+					className="my-1 cursor-pointer data-[state=checked]:bg-teal-500 data-[state=unchecked]:bg-amber-800!"
+				/>
 			</div>
 			<div className="text-foreground/70 max-w-60 text-sm font-normal">
 				{children}

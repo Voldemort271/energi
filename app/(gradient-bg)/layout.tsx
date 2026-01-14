@@ -5,6 +5,8 @@ import Lenis from 'lenis';
 import Navbar from '@/components/root/navbar';
 import LogoBar from '@/components/root/logo-bar';
 import Footer from '@/components/root/footer';
+import FloatingNav from '@/components/root/floating-nav';
+import { useAppPreferencesContext } from '@/context/app-preferences-context';
 
 export default function MobileLayoutWithGradient({
 	children,
@@ -12,6 +14,7 @@ export default function MobileLayoutWithGradient({
 	children: ReactNode;
 }>) {
 	const containerRef = useRef<HTMLDivElement>(null);
+	const { floatingNav } = useAppPreferencesContext();
 
 	useEffect(() => {
 		if (!containerRef.current) return;
@@ -54,8 +57,8 @@ export default function MobileLayoutWithGradient({
 				{children}
 				<Footer />
 			</div>
-			<div className="fixed bottom-0 z-50 w-full sm:sticky">
-				<Navbar />
+			<div className="pointer-events-none fixed bottom-0 z-50 w-full sm:sticky">
+				{floatingNav ? <FloatingNav /> : <Navbar />}
 			</div>
 		</main>
 	);
