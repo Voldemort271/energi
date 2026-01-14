@@ -2,6 +2,7 @@ import React from 'react';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Globe, MapPin, Users } from 'lucide-react';
 import { LeaderboardVariant } from '@/db/leaderboard-data';
+import { finishTimedTask } from '@/utils/timer-utils';
 
 interface Props {
 	toggle: LeaderboardVariant;
@@ -9,6 +10,11 @@ interface Props {
 }
 
 const LeaderboardToggle = ({ toggle, setToggle }: Props) => {
+	const finishFriendsLeaderboardTask = () => {
+		finishTimedTask('open_friends_leaderboard_bottom_nav');
+		finishTimedTask('open_friends_leaderboard_floating_nav');
+	};
+
 	return (
 		<ToggleGroup
 			type="single"
@@ -31,6 +37,7 @@ const LeaderboardToggle = ({ toggle, setToggle }: Props) => {
 				value="friends"
 				aria-label="Toggle friends leaderboard"
 				className="cursor-pointer rounded-full border-zinc-900/10 bg-zinc-950/20 text-zinc-100! transition-all hover:scale-105 hover:bg-zinc-950/40 data-[state=on]:bg-amber-700/20 data-[state=on]:*:[svg]:stroke-amber-200"
+				onClick={finishFriendsLeaderboardTask}
 			>
 				<Users />
 				Friends

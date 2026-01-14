@@ -1,8 +1,10 @@
 import { toast } from 'sonner';
 
-export type availableTasks = 'task1' | 'task2';
+export type AvailableTasks =
+	| 'open_friends_leaderboard_bottom_nav'
+	| 'open_friends_leaderboard_floating_nav';
 
-export const startTimedTask = (taskName: availableTasks): void => {
+export const startTimedTask = (taskName: AvailableTasks): void => {
 	if (typeof window === 'undefined') return;
 
 	const isAnyTaskRunning = sessionStorage.getItem('taskInProgress') === 'true';
@@ -23,7 +25,20 @@ export const startTimedTask = (taskName: availableTasks): void => {
 	toast.success('Timer started', { position: 'top-center' });
 };
 
-export const endTimedTask = (taskName: availableTasks): number => {
+export const abortTimedTask = (taskName: AvailableTasks): void => {
+	if (typeof window === 'undefined') return;
+
+	const startTime = sessionStorage.getItem(taskName);
+	const isTaskRunning = !!sessionStorage.getItem('taskInProgress');
+
+	if (!startTime || !isTaskRunning) return;
+
+	sessionStorage.removeItem('taskInProgress');
+	sessionStorage.removeItem(taskName);
+	toast.error('Task aborted', { position: 'top-center' });
+};
+
+export const finishTimedTask = (taskName: AvailableTasks): number => {
 	if (typeof window === 'undefined') return -1;
 
 	const startTimeStr = sessionStorage.getItem(taskName);
@@ -37,6 +52,8 @@ export const endTimedTask = (taskName: availableTasks): number => {
 	sessionStorage.removeItem(taskName);
 	toast.success(`Task completed in ${elapsedTime} seconds`, {
 		position: 'top-center',
+		duration: 40000,
+		closeButton: true,
 	});
 	return elapsedTime;
 };

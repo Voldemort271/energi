@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { endTimedTask, startTimedTask } from '@/utils/timer-utils';
+import OpenFriendsLeaderboardTest from '@/components/tests/open-friends-leaderboard';
 
 const TestsPage = () => {
 	return (
@@ -29,22 +29,17 @@ const TestsPage = () => {
 						prevented while a task is running, since these tasks focus on your
 						performance given these constraints.
 						<div className="bg-foreground/5 h-px w-full" />
-						Your time is recorded as soon as you hit the &quot;Finish Task&quot;
-						button, and you can see your results here on this page.
+						This is not a test of your reflexes; please take your time.
 						<div className="bg-foreground/5 h-px w-full" />
-						<div
-							className="w-full bg-red-400 px-5 py-5"
-							onClick={() => startTimedTask('task1')}
-						>
-							click1
-						</div>
-						<div
-							className="w-full bg-red-400 px-5 py-5"
-							onClick={() => endTimedTask('task1')}
-						>
-							click2
-						</div>
+						Your time is recorded as soon as you hit the &quot;Finish Task&quot;
+						button, and you can see your results in a pop-up at the top.
 					</div>
+				</div>
+				<div className="mt-5 w-full space-y-2.5">
+					<div className="font-title text-foreground/70 text-sm font-medium uppercase">
+						available tests
+					</div>
+					<OpenFriendsLeaderboardTest />
 				</div>
 			</div>
 		</section>
