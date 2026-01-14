@@ -30,7 +30,7 @@ const PieChartWithPaddingAngle = () => {
 				innerRadius="80%"
 				outerRadius="100%"
 				cornerRadius="50%"
-				stroke={theme.id === 'dark' ? '#f4f4f533' : '#09090B33'}
+				stroke={theme.id === 'light' ? '#09090B33' : '#f4f4f533'}
 				startAngle={-90}
 				endAngle={-450}
 				paddingAngle={5}
@@ -54,7 +54,7 @@ const PieChartWithPaddingAngle = () => {
 								fontSize="32"
 								dy="-10px"
 								fontWeight={'600'}
-								fill={theme.id === 'dark' ? '#f4f4f5' : '#09090B'}
+								fill={theme.id === 'dark' ? '#09090B' : '#f4f4f5'}
 							>
 								23 kWh
 							</tspan>

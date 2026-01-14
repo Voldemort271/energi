@@ -64,9 +64,9 @@ const DailyChart = () => {
 				<XAxis dataKey="name" />
 				<Tooltip
 					contentStyle={{
-						backgroundColor: theme.id === 'dark' ? '#09090Bee' : '#f4f4f5ee',
+						backgroundColor: theme.id === 'light' ? '#f4f4f5ee' : '#09090Bee',
 						borderWidth: 1,
-						borderColor: theme.id === 'dark' ? '#f4f4f516' : '#09090B16',
+						borderColor: theme.id === 'light' ? '#09090B16' : '#f4f4f516',
 						borderRadius: 10,
 						fontSize: 12,
 						padding: '10px 15px',
