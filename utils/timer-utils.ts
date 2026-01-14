@@ -25,10 +25,7 @@ export const endTimedTask = (taskName: availableTasks): number => {
 	const startTimeStr = sessionStorage.getItem(taskName);
 	const isTaskRunning = !!sessionStorage.getItem('taskInProgress');
 
-	if (!startTimeStr || !isTaskRunning) {
-		toast.error('Task was never started', { position: 'top-center' });
-		return -1;
-	}
+	if (!startTimeStr || !isTaskRunning) return -1;
 
 	const startTime = parseInt(startTimeStr, 10);
 	const elapsedTime = (Date.now() - startTime) / 1000;

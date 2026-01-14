@@ -73,7 +73,7 @@ export const DropdownSettingItem = ({
 					{title}
 				</div>
 				<div
-					className={`text-sm font-semibold ${isTaskInProgress ? 'text-teal-600' : 'text-foreground/70'}`}
+					className={`text-sm font-semibold ${!isTaskInProgress ? 'text-teal-600' : 'text-foreground/70'}`}
 				>
 					{currItem.name}
 				</div>
