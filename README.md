@@ -6,6 +6,18 @@ Run the code with `pnpm dev`. Install dependencies with `pnpm i` or `npm i`, but
 when you add dependencies please make sure to do it with `pnpm` because the
 lockfiles may mismatch if we both use different package managers.
 
+# Evaluation Part: Notes
+
+- There's two variants of the navigation bar. Users can toggle between variants in the 'App Preferences' section in
+  the profile page. Measurables:
+    - Rating looks (theme dependent or independent)
+    - Rating convenience and ease of use
+    - Time taken to complete a certain action through each navigation variant. We will get continuous numeric data
+      from this (as opposed to discrete data from the ratings). We can then conduct a hypothesis test to check if
+      one of the variants is actually better than the other.
+- There's dark and light mode in the app. Measurables: asking users to rate the looks wrt theme (x/10 for dark mode,
+  x/10 for light mode). We can then plot this data on a histogram or a box plot.
+
 # Folder structure
 
 ## App folder
