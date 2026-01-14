@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
 	DropdownSettingItem,
 	ToggleSettingItem,
@@ -11,13 +11,18 @@ import {
 	themeOptions,
 } from '@/db/settings-data';
 import { useAppPreferencesContext } from '@/context/app-preferences-context';
+import { CURRENCIES, CurrencyCode } from '@/db/currency';
 
 const PreferencesSection = () => {
-	const [currency, setCurrency] = useState<SettingsDropdownList[number]>(
-		currencyOptions[0],
-	);
+	const { theme, setTheme, currency, setCurrency } = useAppPreferencesContext();
 
-	const { theme, setTheme } = useAppPreferencesContext();
+	const [activeCurrency, setActiveCurrency] = useState<
+		SettingsDropdownList[number]
+	>({ id: currency.code, name: currency.label });
+
+	useEffect(() => {
+		setCurrency(CURRENCIES[activeCurrency.id as CurrencyCode]);
+	}, [activeCurrency, setCurrency]);
 
 	return (
 		<div className="space-y-2.5">
@@ -34,8 +39,8 @@ const PreferencesSection = () => {
 				<DropdownSettingItem
 					title={'Currency'}
 					menuItems={currencyOptions}
-					currItem={currency}
-					setCurrItem={setCurrency}
+					currItem={activeCurrency}
+					setCurrItem={setActiveCurrency}
 				/>
 				<div className="bg-foreground/5 h-px w-full" />
 				<DropdownSettingItem
