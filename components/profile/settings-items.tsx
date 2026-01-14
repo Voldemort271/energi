@@ -1,3 +1,5 @@
+'use client';
+
 import React, { Dispatch, SetStateAction } from 'react';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
