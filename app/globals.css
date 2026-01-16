@@ -3,6 +3,30 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Custom scrollbar styles */
+.scrollbar-thin {
+	scrollbar-width: thin;
+}
+
+.scrollbar-thumb-foreground\/20::-webkit-scrollbar-thumb {
+	background-color: rgba(var(--foreground), 0.2);
+	border-radius: 6px;
+}
+
+.scrollbar-track-transparent::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+
+/* Smooth scrolling animations */
+* {
+	scroll-behavior: smooth;
+}
+
 @font-face {
 	font-family: 'Satoshi';
 	src: url('../public/fonts/satoshi/base.ttf') format('ttf');
@@ -151,4 +175,28 @@ body {
 	body {
 		@apply bg-background text-foreground;
 	}
+}
+
+/* Custom scrollbar styles for better UX */
+.scrollbar-thin {
+	scrollbar-width: thin;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+
+.scrollbar-thumb-foreground\/20::-webkit-scrollbar-thumb {
+	background-color: rgba(255, 255, 255, 0.2);
+	border-radius: 6px;
+}
+
+.scrollbar-track-transparent::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+/* Smooth scrolling animations */
+* {
+	scroll-behavior: smooth;
 }

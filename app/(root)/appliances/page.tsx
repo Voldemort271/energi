@@ -5,10 +5,15 @@ import { motion, AnimatePresence } from 'motion/react';
 import { applianceData } from '@/db/appliance-data';
 import ApplianceCard from '@/components/appliances/appliance-card';
 import AddNewButton from '@/components/appliances/add-new-button';
+import AddApplianceModal from '@/components/appliances/add-appliance-modal';
+import { useToast } from '@/components/ui/toast';
 
 const AppliancesPage = () => {
 	const [deviceCount, setDeviceCount] = useState(0);
 	const [isVisible, setIsVisible] = useState(false);
+	const [appliances, setAppliances] = useState(applianceData);
+	const [showAddModal, setShowAddModal] = useState(false);
+	const { addToast } = useToast();
 
 	useEffect(() => {
 		// Animate device count on mount
@@ -16,7 +21,7 @@ const AppliancesPage = () => {
 		const timer = setTimeout(() => {
 			let count = 0;
 			const interval = setInterval(() => {
-				if (count < applianceData.length) {
+				if (count < appliances.length) {
 					count++;
 					setDeviceCount(count);
 				} else {
@@ -26,7 +31,22 @@ const AppliancesPage = () => {
 		}, 800);
 
 		return () => clearTimeout(timer);
-	}, []);
+	}, [appliances.length]);
+
+	const handleAddAppliance = (newAppliance: any) => {
+		setAppliances(prev => [...prev, newAppliance]);
+		
+		// Show success toast
+		addToast({
+			title: 'Appliance Added Successfully!',
+			description: `${newAppliance.name} has been connected to your energy monitoring system.`,
+			type: 'success',
+			duration: 4000,
+		});
+
+		// Trigger confetti or celebration effect (optional)
+		// You could add a confetti library here for extra polish
+	};
 
 	return (
 		<motion.section 
@@ -68,7 +88,7 @@ const AppliancesPage = () => {
 						animate={{ x: 0, opacity: 1 }}
 						transition={{ duration: 0.5, delay: 0.5 }}
 					>
-						<AddNewButton />
+						<AddNewButton onClick={() => setShowAddModal(true)} />
 					</motion.div>
 				</div>
 			</motion.div>
@@ -80,13 +100,31 @@ const AppliancesPage = () => {
 				animate={{ y: 0, opacity: 1 }}
 				transition={{ duration: 0.6, delay: 0.6 }}
 			>
-				<AnimatePresence>
-					{applianceData.map((appliance, index) => (
-						<ApplianceCard
+				<AnimatePresence mode="popLayout">
+					{appliances.map((appliance, index) => (
+						<motion.div
 							key={appliance.id}
-							appliance={appliance}
-							index={index}
-						/>
+							layout
+							initial={{ opacity: 0, scale: 0.8, y: 20 }}
+							animate={{ 
+								opacity: 1, 
+								scale: 1, 
+								y: 0,
+								transition: { 
+									duration: 0.4, 
+									delay: index < applianceData.length ? index * 0.1 : 0,
+									ease: 'easeOut'
+								}
+							}}
+							exit={{ opacity: 0, scale: 0.8, y: -20 }}
+							whileHover={{ y: -4 }}
+							transition={{ layout: { duration: 0.3 } }}
+						>
+							<ApplianceCard
+								appliance={appliance}
+								index={index}
+							/>
+						</motion.div>
 					))}
 				</AnimatePresence>
 			</motion.div>
@@ -117,6 +155,13 @@ const AppliancesPage = () => {
 
 			{/* Bottom spacing for navbar */}
 			<div className="h-5" />
+
+			{/* Add Appliance Modal */}
+			<AddApplianceModal 
+				isOpen={showAddModal} 
+				onClose={() => setShowAddModal(false)} 
+				onAdd={handleAddAppliance} 
+			/>
 		</motion.section>
 	);
 };

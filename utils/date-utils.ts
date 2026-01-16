@@ -1,19 +1,23 @@
 export function formatTimeDiff(
-	from: Date,
+	from: Date | string,
 	to: Date = new Date(),
 	locale: string = 'en',
 ): string {
 	const rtf = new Intl.RelativeTimeFormat(locale, { numeric: 'auto' });
 
-	const diffMs = to.getTime() - from.getTime();
+	// Ensure from is a Date object
+	const fromDate = from instanceof Date ? from : new Date(from);
+	const toDate = to instanceof Date ? to : new Date(to);
+
+	const diffMs = toDate.getTime() - fromDate.getTime();
 
 	const seconds = Math.round(diffMs / 1000);
 	const minutes = Math.round(seconds / 60);
 	const hours = Math.round(minutes / 60);
 	const days = Math.round(hours / 24);
 
-	const yearDiff = to.getFullYear() - from.getFullYear();
-	const monthDiff = yearDiff * 12 + (to.getMonth() - from.getMonth());
+	const yearDiff = toDate.getFullYear() - fromDate.getFullYear();
+	const monthDiff = yearDiff * 12 + (toDate.getMonth() - fromDate.getMonth());
 
 	if (Math.abs(seconds) < 60) return rtf.format(-seconds, 'second');
 	if (Math.abs(minutes) < 60) return rtf.format(-minutes, 'minute');

@@ -4,7 +4,11 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Plus } from 'lucide-react';
 
-const AddNewButton = () => {
+interface AddNewButtonProps {
+	onClick: () => void;
+}
+
+const AddNewButton = ({ onClick }: AddNewButtonProps) => {
 	const [isHovered, setIsHovered] = useState(false);
 
 	return (
@@ -16,6 +20,7 @@ const AddNewButton = () => {
 			whileTap={{ scale: 0.95 }}
 			onHoverStart={() => setIsHovered(true)}
 			onHoverEnd={() => setIsHovered(false)}
+			onClick={onClick}
 			className="group relative overflow-hidden rounded-full bg-teal-500/10 border border-teal-500/20 px-6 py-3 text-sm font-medium text-teal-500 transition-all duration-300 hover:bg-teal-500/20 hover:border-teal-500/30 hover:shadow-lg hover:shadow-teal-500/10"
 		>
 			<div className="flex items-center gap-2">
