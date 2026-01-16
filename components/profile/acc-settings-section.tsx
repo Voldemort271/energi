@@ -26,7 +26,7 @@ const AccountSettingsSection = () => {
 					setCurrItem={setMfa}
 				/>
 				<div className="bg-foreground/5 h-px w-full" />
-				<ToggleSettingItem title="Enable data backup" toggle={true}>
+				<ToggleSettingItem title="Enable data backup">
 					We&apos;ll store your energy usage data history on our public servers.
 				</ToggleSettingItem>
 				<div className="bg-foreground/5 h-px w-full" />

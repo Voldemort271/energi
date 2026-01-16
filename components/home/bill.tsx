@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import {
 	Select,
 	SelectContent,
@@ -12,21 +12,21 @@ import {
 import { CURRENCIES, CurrencyCode } from '@/db/currency';
 import { convertCurrency } from '@/utils/currency-utils';
 import { ChevronRight } from 'lucide-react';
+import { useAppPreferencesContext } from '@/context/app-preferences-context';
 
 const consumption = 539;
 const pastAvg = 427;
 const rate = 0.25;
 
 const MonthlyBill = () => {
-	const [currency, setCurrency] = useState<CurrencyCode>('EUR');
+	const { currency, setCurrency } = useAppPreferencesContext();
 
-	// TODO: Move currency selection logic to Settings page so that user doesn't have to do it multiple times.
 	return (
 		<section className="flex w-full flex-col items-start justify-start rounded-lg border border-zinc-100/10 bg-amber-500/5 px-5 py-6">
 			<div className="font-title flex w-full flex-col">
 				<Select
-					value={currency}
-					onValueChange={(val: CurrencyCode) => setCurrency(val)}
+					value={currency.code}
+					onValueChange={(val: CurrencyCode) => setCurrency(CURRENCIES[val])}
 				>
 					<SelectTrigger className="mb-2.5 rounded-full text-sm font-medium">
 						<SelectValue />
@@ -45,7 +45,7 @@ const MonthlyBill = () => {
 					Projected monthly bill
 				</div>
 				<div className="font-title mb-1 text-4xl font-bold text-amber-400">
-					{`${Math.round(convertCurrency(consumption * rate, 'EUR', currency) * 100) / 100} ${CURRENCIES[currency].symbol || currency}`}
+					{`${Math.round(convertCurrency(consumption * rate, 'EUR', currency.code) * 100) / 100} ${CURRENCIES[currency.code].symbol || currency.code}`}
 				</div>
 
 				{/*TODO: Link this to tips page*/}
@@ -57,7 +57,7 @@ const MonthlyBill = () => {
 					Average over 3 months
 				</div>
 				<div className="font-title text-foreground text-4xl font-bold">
-					{`${Math.round(convertCurrency(pastAvg * rate, 'EUR', currency) * 100) / 100} ${CURRENCIES[currency].symbol || currency}`}
+					{`${Math.round(convertCurrency(pastAvg * rate, 'EUR', currency.code) * 100) / 100} ${CURRENCIES[currency.code].symbol || currency.code}`}
 				</div>
 			</div>
 		</section>

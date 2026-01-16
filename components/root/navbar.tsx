@@ -2,22 +2,14 @@
 
 import React, { ReactNode } from 'react';
 import Link from 'next/link';
-import { BellDot, Home, Medal, Microwave } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import { availablePages } from '@/db/page-content-data';
 
 interface Props {
 	path: string;
 	icon: ReactNode;
 	active: boolean;
 }
-
-// TODO: Move this to separate file in db maybe
-const pages = [
-	{ path: '/', icon: <Home size={24} /> },
-	{ path: '/appliances', icon: <Microwave size={24} /> },
-	{ path: '/leaderboard', icon: <Medal size={24} /> },
-	{ path: '/inbox', icon: <BellDot size={24} /> },
-];
 
 const NavButton = ({ path, icon, active }: Props) => {
 	return (
@@ -34,8 +26,8 @@ const Navbar = () => {
 	const pathname = usePathname();
 
 	return (
-		<nav className="bg-background/90 border-foreground/10 flex w-full justify-between gap-5 border-t px-5 py-3 backdrop-blur-2xl sm:px-12">
-			{pages.map(({ path, icon }) => (
+		<nav className="bg-background/90 border-foreground/10 pointer-events-auto flex w-full justify-between gap-5 border-t px-5 py-3 backdrop-blur-2xl sm:px-12">
+			{availablePages.map(({ path, icon }) => (
 				<NavButton
 					key={path}
 					path={path}

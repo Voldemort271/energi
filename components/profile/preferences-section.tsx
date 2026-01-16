@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
 	DropdownSettingItem,
 	ToggleSettingItem,
@@ -10,14 +10,26 @@ import {
 	SettingsDropdownList,
 	themeOptions,
 } from '@/db/settings-data';
+import { useAppPreferencesContext } from '@/context/app-preferences-context';
+import { CURRENCIES, CurrencyCode } from '@/db/currency';
 
 const PreferencesSection = () => {
-	const [theme, setTheme] = useState<SettingsDropdownList[number]>(
-		themeOptions[0],
-	);
-	const [currency, setCurrency] = useState<SettingsDropdownList[number]>(
-		currencyOptions[0],
-	);
+	const {
+		theme,
+		setTheme,
+		currency,
+		setCurrency,
+		floatingNav,
+		setFloatingNav,
+	} = useAppPreferencesContext();
+
+	const [activeCurrency, setActiveCurrency] = useState<
+		SettingsDropdownList[number]
+	>({ id: currency.code, name: currency.label });
+
+	useEffect(() => {
+		setCurrency(CURRENCIES[activeCurrency.id as CurrencyCode]);
+	}, [activeCurrency, setCurrency]);
 
 	return (
 		<div className="space-y-2.5">
@@ -29,13 +41,13 @@ const PreferencesSection = () => {
 					Enable notifications for timely updates on your smartphone.
 				</ToggleSettingItem>
 				<div className="bg-foreground/5 h-px w-full" />
-				<ToggleSettingItem title="Allow Location" toggle={true} />
+				<ToggleSettingItem title="Allow Location" />
 				<div className="bg-foreground/5 h-px w-full" />
 				<DropdownSettingItem
 					title={'Currency'}
 					menuItems={currencyOptions}
-					currItem={currency}
-					setCurrItem={setCurrency}
+					currItem={activeCurrency}
+					setCurrItem={setActiveCurrency}
 				/>
 				<div className="bg-foreground/5 h-px w-full" />
 				<DropdownSettingItem
@@ -44,6 +56,14 @@ const PreferencesSection = () => {
 					currItem={theme}
 					setCurrItem={setTheme}
 				/>
+				<div className="bg-foreground/5 h-px w-full" />
+				<ToggleSettingItem
+					title={'New: Floating Nav'}
+					toggle={floatingNav}
+					setToggle={setFloatingNav}
+				>
+					Enable this setting to use our new floating navigation.
+				</ToggleSettingItem>
 			</div>
 		</div>
 	);

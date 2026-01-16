@@ -3,6 +3,7 @@
 import { motion } from 'motion/react';
 import React from 'react';
 import { Legend, Pie, PieChart } from 'recharts';
+import { useAppPreferencesContext } from '@/context/app-preferences-context';
 
 //TODO: Move this data out of this file. Optional but will help maintain consistency across project
 const data = [
@@ -13,7 +14,9 @@ const data = [
 	{ name: 'Free', value: 7, fill: '#18181B' },
 ];
 
-export function PieChartWithPaddingAngle() {
+const PieChartWithPaddingAngle = () => {
+	const { theme } = useAppPreferencesContext();
+
 	return (
 		<PieChart
 			style={{
@@ -22,13 +25,12 @@ export function PieChartWithPaddingAngle() {
 			}}
 			responsive
 		>
-			{/*TODO: Change text colours (and colour of free space) based on theme setting*/}
 			<Pie
 				data={data}
 				innerRadius="80%"
 				outerRadius="100%"
 				cornerRadius="50%"
-				stroke={'#f4f4f533'}
+				stroke={theme.id === 'light' ? '#09090B33' : '#f4f4f533'}
 				startAngle={-90}
 				endAngle={-450}
 				paddingAngle={5}
@@ -52,7 +54,7 @@ export function PieChartWithPaddingAngle() {
 								fontSize="32"
 								dy="-10px"
 								fontWeight={'600'}
-								fill={'#f4f4f5'}
+								fill={theme.id === 'light' ? '#09090B' : '#f4f4f5'}
 							>
 								23 kWh
 							</tspan>
@@ -90,7 +92,7 @@ export function PieChartWithPaddingAngle() {
 			/>
 		</PieChart>
 	);
-}
+};
 
 const EnergyUsagePie = () => {
 	return (
