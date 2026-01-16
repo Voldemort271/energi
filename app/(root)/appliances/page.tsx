@@ -7,13 +7,13 @@ import ApplianceCard from '@/components/appliances/appliance-card';
 import AddNewButton from '@/components/appliances/add-new-button';
 import AddApplianceModal from '@/components/appliances/add-appliance-modal';
 import { useToast } from '@/components/ui/toast';
+import { toast } from 'sonner';
 
 const AppliancesPage = () => {
 	const [deviceCount, setDeviceCount] = useState(0);
 	const [isVisible, setIsVisible] = useState(false);
 	const [appliances, setAppliances] = useState(applianceData);
 	const [showAddModal, setShowAddModal] = useState(false);
-	const { addToast } = useToast();
 
 	useEffect(() => {
 		// Animate device count on mount
@@ -36,12 +36,11 @@ const AppliancesPage = () => {
 	const handleAddAppliance = (newAppliance: any) => {
 		setAppliances(prev => [...prev, newAppliance]);
 		
-		// Show success toast
-		addToast({
-			title: 'Appliance Added Successfully!',
-			description: `${newAppliance.name} has been connected to your energy monitoring system.`,
-			type: 'success',
-			duration: 4000,
+		// Show success toast - matching partner's test completion style
+		toast.success(`Appliance "${newAppliance.name}" added successfully`, {
+			position: 'top-center',
+			duration: 6000,
+			closeButton: true,
 		});
 	};
 
