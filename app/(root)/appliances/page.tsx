@@ -43,9 +43,6 @@ const AppliancesPage = () => {
 			type: 'success',
 			duration: 4000,
 		});
-
-		// Trigger confetti or celebration effect (optional)
-		// You could add a confetti library here for extra polish
 	};
 
 	return (

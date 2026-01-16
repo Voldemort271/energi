@@ -5,8 +5,6 @@ import './globals.css';
 import React, { ReactNode } from 'react';
 import { AppPreferencesProvider } from '@/context/app-preferences-context';
 import { ThemeProviderWrapper } from '@/context/theme-provider';
-import { Analytics } from '@vercel/analytics/next';
-import { Toaster } from '@/components/ui/sonner';
 
 const instrumentSans = Instrument_Sans({
 	variable: '--font-instrument-sans',
@@ -45,8 +43,6 @@ export default function RootLayout({
 				<AppPreferencesProvider>
 					<ThemeProviderWrapper>{children}</ThemeProviderWrapper>
 				</AppPreferencesProvider>
-				<Analytics />
-				<Toaster />
 			</body>
 		</html>
 	);

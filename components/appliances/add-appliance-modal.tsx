@@ -51,12 +51,12 @@ const AddApplianceModal = ({ isOpen, onClose, onAdd }: AddApplianceModalProps) =
 		
 		const newAppliance = {
 			id: Date.now().toString(),
-			...formData,
-			type: selectedType,
-			status: 'off' as const,
+			name: formData.name,
+			model: formData.brand + (formData.model ? ` ${formData.model}` : ''),
+			status: 'standby' as const, // Use valid status from ApplianceData interface
+			lastUsed: new Date(),
+			image: '📱', // Default appliance icon
 			powerUsage: parseInt(formData.wattage) || 0,
-			isOnline: true,
-			lastUsed: new Date().toISOString(),
 		};
 		
 		onAdd(newAppliance);
