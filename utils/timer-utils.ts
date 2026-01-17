@@ -2,7 +2,9 @@ import { toast } from 'sonner';
 
 export type AvailableTasks =
 	| 'open_friends_leaderboard_bottom_nav'
-	| 'open_friends_leaderboard_floating_nav';
+	| 'open_friends_leaderboard_floating_nav'
+	| 'add_appliance_bottom_nav'
+	| 'add_appliance_floating_nav';
 
 export const startTimedTask = (taskName: AvailableTasks): void => {
 	if (typeof window === 'undefined') return;

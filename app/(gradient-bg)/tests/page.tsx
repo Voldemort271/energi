@@ -2,6 +2,7 @@
 
 import React from 'react';
 import OpenFriendsLeaderboardTest from '@/components/tests/open-friends-leaderboard';
+import AddApplianceTest from '@/components/tests/add-appliance-test';
 
 const TestsPage = () => {
 	return (
@@ -40,6 +41,7 @@ const TestsPage = () => {
 						available tests
 					</div>
 					<OpenFriendsLeaderboardTest />
+					<AddApplianceTest />
 				</div>
 			</div>
 		</section>
