@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const StatusSection = () => {
 	return (
@@ -13,9 +14,14 @@ const StatusSection = () => {
 			</div>
 			<div className="h-full w-full rounded-md border border-teal-500/10 bg-teal-500/10 px-2.5 py-3">
 				<div className="font-title text-lg font-semibold text-teal-600">
-					Weekly Report
+					UI/UX Tests
 				</div>
-				<div className="text-foreground/80 text-sm font-medium">View here</div>
+				<Link
+					href={'/tests'}
+					className="text-foreground/80 text-sm font-medium"
+				>
+					Click here
+				</Link>
 			</div>
 		</div>
 	);
